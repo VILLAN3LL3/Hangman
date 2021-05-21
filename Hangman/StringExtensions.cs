@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Hangman
@@ -7,10 +8,10 @@ namespace Hangman
     {
         public static IEnumerable<int> AllIndexesOf(this char[] wordArray, char searchedLetter)
         {
-            char lowerLetter = char.ToLowerInvariant(searchedLetter);
+            string searchedLetterString = searchedLetter.ToString();
 
             return Enumerable.Range(0, wordArray.Length)
-                .Where(i => char.ToLowerInvariant(wordArray[i]).Equals(lowerLetter));
+                .Where(i => wordArray[i].ToString().Equals(searchedLetterString, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }
