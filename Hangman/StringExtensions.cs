@@ -5,13 +5,12 @@ namespace Hangman
 {
     public static class StringExtensions
     {
-        public static IEnumerable<int> AllIndexesOf(this string word, char searchedLetter)
+        public static IEnumerable<int> AllIndexesOf(this char[] wordArray, char searchedLetter)
         {
-            char lowerLetter = char.ToLower(searchedLetter);
-            return word
-                .ToLowerInvariant()
-                .Select((letter, index) => letter.Equals(lowerLetter) ? index : -1)
-                .Where(index => index != -1);
+            char lowerLetter = char.ToLowerInvariant(searchedLetter);
+
+            return Enumerable.Range(0, wordArray.Length)
+                .Where(i => char.ToLowerInvariant(wordArray[i]).Equals(lowerLetter));
         }
     }
 }
