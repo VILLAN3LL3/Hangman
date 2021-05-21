@@ -5,7 +5,7 @@ using NUnit.Framework;
 namespace Hangman.Tests
 {
     [TestFixture]
-    public class HangmanGameTests
+    public class HangmanGameDeveloperTests
     {
         private HangmanGame _hangmanGame;
 
@@ -25,7 +25,7 @@ namespace Hangman.Tests
                 yield return new TestCaseData('r', "-e-e-o-er");
                 yield return new TestCaseData('a', "-e-e-o-er");
                 yield return new TestCaseData('d', "De-e-o-er");
-                yield return new TestCaseData('l', "De-elo-er");
+                yield return new TestCaseData('L', "De-elo-er");
                 yield return new TestCaseData('p', "De-eloper");
                 yield return new TestCaseData('v', "Developer");
             }

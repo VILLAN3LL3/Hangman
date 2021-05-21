@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Hangman
 {
@@ -7,12 +7,11 @@ namespace Hangman
     {
         public static IEnumerable<int> AllIndexesOf(this string word, char searchedLetter)
         {
-            int minIndex = word.IndexOf(searchedLetter, StringComparison.InvariantCultureIgnoreCase);
-            while (minIndex != -1)
-            {
-                yield return minIndex;
-                minIndex = word.IndexOf(searchedLetter, minIndex + 1);
-            }
+            char lowerLetter = char.ToLower(searchedLetter);
+            return word
+                .ToLowerInvariant()
+                .Select((letter, index) => letter.Equals(lowerLetter) ? index : -1)
+                .Where(index => index != -1);
         }
     }
 }
